@@ -1,5 +1,7 @@
+const usuario = require('../models/usuario');
 let Usuario = require('../models/usuario');
 let bcrypt = require('bcrypt-nodejs');
+let jwt = require('../helpers/jwt');
 
 const registro_usuario_admin = async function(req, res) {
     let data = req.body;
@@ -22,6 +24,28 @@ const registro_usuario_admin = async function(req, res) {
 
 }
 
+const login_usuario = async function (req, res){
+    let data = req.body;
+
+    let usuarios = await Usuario.find({email: data.email});
+    
+    if(usuarios.length >= 1) {
+        bcrypt.compare(data.password, usuarios[0].password, async function (err, check) {
+            if(check){
+                res.status(200).send({
+                    token: jwt.createToken(usuarios[0]),
+                    usuario: usuario[0],
+                });
+            } else {
+                res.status(200).send({data: undefined, message: 'La contraseña es incorrecta'});
+            }
+        })
+    } else {
+        res.status(200).send({data: undefined, message: 'No se encontro el correo electrónico'});
+    }
+}
+
 module.exports = {
-    registro_usuario_admin
+    registro_usuario_admin,
+    login_usuario
 }
