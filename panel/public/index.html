@@ -5,6 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="<%= BASE_URL %>assets/favicon/favicon.ico" type="image/x-icon"/>
+    
+    <!-- Map CSS -->
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" />
+    
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="<%= BASE_URL %>assets/css/libs.bundle.css" />
+    
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="<%= BASE_URL %>assets/css/theme.bundle.css" id="stylesheetLight" />
+    <link rel="stylesheet" href="<%= BASE_URL %>assets/css/theme-dark.bundle.css" id="stylesheetDark" />
+
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
@@ -13,5 +27,15 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+
+     <!-- JAVASCRIPT -->
+    <!-- Map JS -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+    
+    <!-- Vendor JS -->
+    <script src="<%= BASE_URL %>assets/js/vendor.bundle.js"></script>
+    
+    <!-- Theme JS -->
+    <script src="<%= BASE_URL %>assets/js/theme.bundle.js"></script>
   </body>
 </html>
